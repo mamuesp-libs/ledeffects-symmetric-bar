@@ -117,7 +117,7 @@ static void mgos_intern_symmetric_bar_loop(mgos_rgbleds* leds)
             used_colors = sbd->shade_colors;
             break;
         }
-        mgos_rgbleds_set_all(leds, sbd->back_ground);
+        mgos_universal_led_set_all(leds, sbd->back_ground);
 
         int start_row = min(mid_upper, num_rows);
         int end_row = min((mid_upper + range), num_rows);
@@ -125,7 +125,7 @@ static void mgos_intern_symmetric_bar_loop(mgos_rgbleds* leds)
             out_pix = tools_fade_color(used_colors[row - mid_upper], sbd->atd->fade);
             for (int col = 0; col < num_cols; col++) {
                 LOG(LL_VERBOSE_DEBUG, ("ledeffects_symmetric_bar:\tR: 0x%.02X\tG: 0x%.02X\tB: 0x%.02X", out_pix.r, out_pix.g, out_pix.b));
-                mgos_rgbleds_plot_pixel(leds, col, num_rows - 1 - row, out_pix, false);
+                mgos_universal_led_plot_pixel(leds, col, num_rows - 1 - row, out_pix, false);
             }
         }
 
@@ -135,11 +135,11 @@ static void mgos_intern_symmetric_bar_loop(mgos_rgbleds* leds)
             out_pix = tools_fade_color(used_colors[end_row - row], sbd->atd->fade);
             for (int col = 0; col < num_cols; col++) {
                 LOG(LL_VERBOSE_DEBUG, ("ledeffects_symmetric_bar:\tR: 0x%.02X\tG: 0x%.02X\tB: 0x%.02X", out_pix.r, out_pix.g, out_pix.b));
-                mgos_rgbleds_plot_pixel(leds, col, num_rows - 1 - row, out_pix, false);
+                mgos_universal_led_plot_pixel(leds, col, num_rows - 1 - row, out_pix, false);
             }
         }
 
-        mgos_rgbleds_show(leds);
+        mgos_universal_led_show(leds);
         if (!sbd->atd->is_noisy) {
             if (leds->pix_pos == sbd->mid_pos_cut) {
                 mgos_msleep(mgos_sys_config_get_ledeffects_symmetric_bar_sleep());
