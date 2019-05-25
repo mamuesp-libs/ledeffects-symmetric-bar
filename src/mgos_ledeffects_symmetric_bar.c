@@ -175,7 +175,7 @@ void mgos_ledeffects_symmetric_bar(void* param, mgos_rgbleds_action action)
     }
 }
 
-bool mgos_symmetric_bar_init(void) {
+bool mgos_ledeffects_symmetric_bar_init(void) {
   LOG(LL_INFO, ("mgos_symmetric_bar_init ..."));
   ledmaster_add_effect("ANIM_SYMMETRIC_BAR", mgos_ledeffects_symmetric_bar);
   return true;
