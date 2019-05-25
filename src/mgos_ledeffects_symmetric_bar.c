@@ -151,7 +151,6 @@ static void mgos_intern_symmetric_bar_loop(mgos_rgbleds* leds)
 
 void mgos_ledeffects_symmetric_bar(void* param, mgos_rgbleds_action action)
 {
-    static uint32_t max_time = 0;
     uint32_t time = (mgos_uptime_micros() / 1000);
     mgos_rgbleds* leds = (mgos_rgbleds*)param;
 
